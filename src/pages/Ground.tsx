@@ -18,7 +18,7 @@ export default function Ground() {
         <p className="text-slate-500 text-sm">Técnica de aterramento 5-4-3-2-1.</p>
       </header>
 
-      <div className="p-6 space-y-4 flex-1 overflow-y-auto [-webkit-overflow-scrolling:touch] touch-pan-y">
+      <div className="p-6 space-y-4 flex-1 overflow-y-auto [-webkit-overflow-scrolling:touch] touch-pan-y [overscroll-behavior-y:none]">
         <p className="text-slate-600 text-sm mb-6 text-center italic">
           Esta técnica ajuda a trazer sua mente de volta ao presente quando você se sente ansioso(a) ou sobrecarregado(a).
         </p>

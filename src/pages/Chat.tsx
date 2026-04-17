@@ -90,7 +90,7 @@ export default function Chat() {
       {/* Área de Mensagens */}
       <div 
         ref={scrollRef} 
-        className="flex-1 overflow-y-auto p-4 space-y-6 [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch] touch-pan-y"
+        className="flex-1 overflow-y-auto p-4 space-y-6 [overscroll-behavior-y:none] [-webkit-overflow-scrolling:touch] touch-pan-y"
       >
         {chatHistory.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center space-y-4 px-8">
