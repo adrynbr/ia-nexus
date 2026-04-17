@@ -13,7 +13,13 @@ export default function Chat() {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
+      const isAtBottom = scrollHeight - scrollTop <= clientHeight + 150;
+      
+      // Auto-scroll only if we are near bottom or it's a very short history
+      if (isAtBottom || chatHistory.length <= 2) {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
     }
   }, [chatHistory, isLoading]);
 
@@ -82,7 +88,10 @@ export default function Chat() {
       </header>
 
       {/* Área de Mensagens */}
-      <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-6">
+      <div 
+        ref={scrollRef} 
+        className="flex-1 overflow-y-auto p-4 space-y-6 [overscroll-behavior:contain] [-webkit-overflow-scrolling:touch] touch-pan-y"
+      >
         {chatHistory.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center space-y-4 px-8">
             <div className="w-16 h-16 bg-indigo-50 rounded-3xl flex items-center justify-center text-indigo-600">

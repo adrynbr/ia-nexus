@@ -17,9 +17,9 @@ export default function Layout({ children, activeTab, onTabChange }: LayoutProps
   ];
 
   return (
-    <div className="flex flex-col h-screen max-w-md mx-auto bg-slate-50 shadow-2xl overflow-hidden relative font-sans">
+    <div className="flex flex-col h-[100dvh] max-w-md mx-auto bg-slate-50 shadow-2xl overflow-hidden relative font-sans">
       {/* Área de Conteúdo Principal */}
-      <main className="flex-1 overflow-y-auto pb-20 relative">
+      <main className="flex-1 overflow-hidden relative">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -27,7 +27,7 @@ export default function Layout({ children, activeTab, onTabChange }: LayoutProps
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="h-full"
+            className="h-full flex flex-col"
           >
             {children}
           </motion.div>
@@ -35,7 +35,7 @@ export default function Layout({ children, activeTab, onTabChange }: LayoutProps
       </main>
 
       {/* Navegação Inferior */}
-      <nav className="h-20 bg-white border-t border-slate-200 flex items-center justify-around px-2 absolute bottom-0 w-full z-40">
+      <nav className="h-20 bg-white border-t border-slate-200 flex items-center justify-around px-2 w-full z-40 shrink-0">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
